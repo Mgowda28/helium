@@ -9,6 +9,18 @@ app.get('/health',(c)=>{
   return c.json({message:"hello world"},200);
 })
 
+
+app.get('current-time',(e)=>{
+  return e.json({time:new Date().toLocaleTimeString()},200);
+})
+
+
+app.get('/generate',(e)=>{
+  return e.json({number:Math.random()},200);
+})
+
+ 
+
 app.get('/reminders',(context)=>{
   return context.json(reminders,200);
 });

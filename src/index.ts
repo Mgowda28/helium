@@ -61,7 +61,7 @@ app.post('/number', async (c) => {
   const body = await c.req.json();
   const number = body["number"];
   numbers.push(number);
-  return c.json(numbers, 201);
+  return c.json({number:number}, 201);
 })
 
 app.get('/numbers',(c)=>{

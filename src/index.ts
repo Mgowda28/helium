@@ -3,6 +3,7 @@ import {  Hono } from 'hono'
 
 
 const reminders:string[]=[];
+const numbers:number[]=[];
 const app = new Hono()
 
 app.get('/health',(c)=>{
@@ -15,6 +16,8 @@ app.get('/puppet',(c)=>{
   return c.json({queryParameters},200);
 })
 // input for above endpoint (http://localhost:3000/puppet?name=mvg&age=20)
+
+
 
 
  
@@ -54,7 +57,16 @@ app.get('/environment',(context)=>{
 
 
 
+app.post('/number', async (c) => {
+  const body = await c.req.json();
+  const number = body["number"];
+  numbers.push(number);
+  return c.json(numbers, 201);
+})
 
+app.get('/numbers',(c)=>{
+  return c.json(numbers,200);
+})
 
 
 

@@ -1,5 +1,5 @@
 import { serve } from '@hono/node-server'
-import { Hono } from 'hono'
+import {  Hono } from 'hono'
 
 
 const reminders:string[]=[];
@@ -7,6 +7,12 @@ const app = new Hono()
 
 app.get('/health',(c)=>{
   return c.json({message:"hello world"},200);
+})
+
+
+app.get('/puppet',(c)=>{
+  const queryParameters= c.req.query();
+  return c.json({queryParameters},200);
 })
 
 

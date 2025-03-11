@@ -14,6 +14,7 @@ app.get('/puppet',(c)=>{
   const queryParameters= c.req.query();
   return c.json({queryParameters},200);
 })
+// input for above endpoint (http://localhost:3000/puppet?name=mvg&age=20)
 
 
  

@@ -10,17 +10,7 @@ app.get('/health',(c)=>{
 })
 
 
-app.get('current-time',(e)=>{
-  return e.json({time:new Date().toLocaleTimeString()},200);
-})
-
-
-app.get('/generate',(e)=>{
-  return e.json({number:Math.random()},200);
-})
-
  
-
 app.get('/reminders',(context)=>{
   return context.json(reminders,200);
 });
@@ -35,5 +25,32 @@ app.post('/reminders',async (context)=>{
 });
 
 serve(app);
+
+
+
+
+
+app.get('current-time',(c)=>{
+  return c.json({time:new Date().toLocaleTimeString()},200);
+})
+
+
+app.get('/generate',(c)=>{
+  return c.json({number:Math.random()*100},200);
+});
+
+app.get('/environment',(context)=>{
+  const currentNodeVersion = process.version;
+  const currentPlatform = process.platform;
+  return context.json({nodeVersion:currentNodeVersion,platform:currentPlatform},200);
+})
+
+
+
+
+
+
+
+ 
 
 console.log("Server is running on http://localhost:3000")
